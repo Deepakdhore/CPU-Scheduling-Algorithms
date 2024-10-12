@@ -1,6 +1,16 @@
 #include <bits/stdc++.h>
 #include "parser.h"
 
+extern void parse();
+extern void clear_timeline();
+extern void execute_algorithm(int algorithm, int parameter, int operation);
+extern void printTimeline(int idx);
+extern void printStats(int idx);
+
+
+
+
+
 #define all(v) v.begin(), v.end()
 
 using namespace std;
@@ -524,6 +534,16 @@ void execute_algorithm(char algorithm_id, int quantum,string operation)
 
 int main()
 {
+
+     std::ofstream outFile("output.txt");
+
+    // Check if the file opened successfully
+    if (!outFile) {
+        std::cerr << "Error opening file!" << std::endl;
+        return 1; // Return an error code
+    }
+/////////////////////////////////////////////////////////////////////////////////
+
     parse();
     for (int idx = 0; idx < (int)algorithms.size(); idx++)
     {
@@ -535,5 +555,9 @@ int main()
             printStats(idx);
         cout << "\n";
     }
+
+     std::cout.rdbuf(coutbuf);
+    outfile.close();
+    
     return 0;
 }
